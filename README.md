@@ -1,2 +1,103 @@
-# icon-diffusion-research
-Diffusion-based character-conditioned icon generation research
+# 拡散モデルを用いた文字条件付きアイコン画像生成
+
+## 概要
+本リポジトリは、学部卒業研究として行った「拡散モデルを用いた文字条件付きアイコン画像生成」に関する研究をまとめたものです。
+
+近年、Stable Diffusion に代表される拡散モデルは自然画像生成において高い性能を示しています。一方で、アイコンやロゴのような人工画像では、文字やレイアウトなど意味的・構造的要素を正確に生成することが難しいという課題があります。
+
+本研究では、文字を含むアイコン画像に着目し、OCRを用いて抽出した文字情報を条件として与えることで、文字条件付き拡散モデルを構築しました。また、OCR認識信頼度を利用してデータセット品質を定量化し、生成結果への影響を分析しました。
+
+その結果、データ品質を高めることで文字の正確性は向上する一方、配色や形状の多様性が低下するというトレードオフが存在することを確認しました。
+
+---
+
+## 手法
+
+### 使用データセット
+- LLD-icon Dataset
+
+### データセット構築
+- EasyOCR を用いてアイコン画像から文字を抽出
+- OCR認識信頼度を利用してデータ品質を段階的に整理
+- 文字条件付きデータセットを構築
+
+### モデル
+- DDPM ベースの条件付き拡散モデル
+- PyTorch により実装
+- EMA（Exponential Moving Average）を利用
+
+### 評価
+以下の指標を用いて定量評価を行いました。
+
+- OCR認識率
+- OCR認識信頼度
+- FID
+- 色彩多様性指標
+- 形状多様性指標
+- Deep Feature Diversity
+
+また、生成画像全体だけでなく、
+「正しく文字生成できた画像のみ」を対象とした多様性評価も行いました。
+
+---
+
+## 技術スタック
+
+- Python
+- PyTorch
+- CUDA
+- EasyOCR
+- OpenCV
+- NumPy
+- h5py
+- Matplotlib
+- Jupyter Notebook
+- Linux (Ubuntu)
+- Git / GitHub
+
+---
+
+## 実験結果
+
+### 主な結果
+- 高品質データでは文字の正確性が向上
+- 一方でデザイン多様性が低下
+- 低品質データでは多様性が向上
+- ただし文字崩れや誤生成が増加
+
+以上より、
+「文字の正確性」と「デザイン多様性」の間にはトレードオフが存在することを確認しました。
+
+---
+
+## サンプル生成画像
+
+### Character Condition: A
+![Sample A](samples/generated_A.png)
+
+### Character Condition: B
+![Sample B](samples/generated_B.png)
+
+---
+
+## 発表資料
+
+- [卒業研究発表資料](slides/graduation_research_presentation.pdf)
+
+---
+
+## 今後の課題
+
+- 精度と多様性を両立する条件設計
+- OCR誤認識を考慮したデータ選別
+- 複数文字ロゴ生成
+- レイアウト制御
+- Cross-Attention を利用した条件制御拡張
+
+---
+
+## Author
+
+Yuta Takayama  
+Kyushu University
+
