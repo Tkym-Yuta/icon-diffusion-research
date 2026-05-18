@@ -69,23 +69,6 @@
 「文字の正確性」と「デザイン多様性」の間にはトレードオフが存在することを確認しました。
 
 ---
-
-## サンプル生成画像
-
-### Character Condition: A
-![Sample A](samples/generated_A.png)
-
-### Character Condition: B
-![Sample B](samples/generated_B.png)
-
----
-
-## 発表資料
-
-- [卒業研究発表資料](slides/graduation_research_presentation.pdf)
-
----
-
 ## 今後の課題
 
 - 精度と多様性を両立する条件設計
